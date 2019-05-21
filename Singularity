@@ -10,7 +10,7 @@ This container runs includes several PacBio apps.
 
 %environment
     SHELL=/bin/bash
-    export PATH="/opt/miniconda3/bin:$PATH"
+    export PATH="/opt/miniconda2/bin:$PATH"
 
 %post
     # default mount points
@@ -25,17 +25,20 @@ This container runs includes several PacBio apps.
         zlib1g-dev \
         python3-pip \
         pkg-config \
-        python3-dev \
-        python3-setuptools \
-        wget
+        python-dev \
+        python-setuptools \
+        wget \
+        bzip2
     apt-get clean
 
     # install miniconda
-    wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda3.sh
-    bash miniconda3.sh -b -p /opt/miniconda3
-    rm miniconda3.sh
-    export PATH="/opt/miniconda3/bin:$PATH"
+    wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda2.sh
+    bash miniconda2.sh -b -p /opt/miniconda2
+    rm miniconda2.sh
+    export PATH="/opt/miniconda2/bin:$PATH"
 
     # install pacbio apps
-    conda install -c bioconda pbbam blasr lima pbcopper bam2fastx 
-
+    conda install -c bioconda pbbam blasr lima pbcopper bam2fastx
+    wget https://github.com/lh3/minimap2/releases/download/v2.17/minimap2-2.17_x64-linux.tar.bz2 && tar -xvf minimap2-2.17_x64-linux.tar.bz2
+    mv minimap2-2.17_x64-linux/minimap2 /opt/miniconda2/bin
+    rm -rf minimap2-2.17_x64-linux*
