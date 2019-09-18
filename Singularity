@@ -1,12 +1,11 @@
 Bootstrap: docker
-From: ubuntu:16.04
+From: ubuntu:18.04
 
 %labels
 Maintainer Matthew Flister
-Version v1.0
 
 %help
-This container runs includes several PacBio apps.
+This container runs includes available PacBio apps as of 09/18/2019.
 
 %environment
     SHELL=/bin/bash
@@ -38,7 +37,30 @@ This container runs includes several PacBio apps.
     export PATH="/opt/miniconda2/bin:$PATH"
 
     # install pacbio apps
-    conda install -c bioconda pbbam blasr lima pbcopper bam2fastx
+    conda install -c bioconda \
+        bam2fastx \
+        bax2bam \
+        blasr \
+        gcpp \
+        genomicconsenus \
+        isoseq3 \
+        lima \
+        minorseq \
+        pbbam \
+        pbccs \
+        pbcommand \
+        pbcopper \
+        pbcore \
+        pbcoretools \
+        pblaa \
+        pbalign \
+        pbmm2 \
+        pbsv \
+        recalladapters \
+        pb-falcon \
+        pb-dazzler \
+        pb-assembly 
+
     wget https://github.com/lh3/minimap2/releases/download/v2.17/minimap2-2.17_x64-linux.tar.bz2 && tar -xvf minimap2-2.17_x64-linux.tar.bz2
     mv minimap2-2.17_x64-linux/minimap2 /opt/miniconda2/bin
     rm -rf minimap2-2.17_x64-linux*
