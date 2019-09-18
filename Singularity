@@ -41,8 +41,8 @@ This container runs includes available PacBio apps as of 09/18/2019.
         bam2fastx \
         bax2bam \
         blasr \
-        gcpp \
-        genomicconsenus \
+        pbgcpp \
+        genomicconsensus \
         isoseq3 \
         lima \
         minorseq \
