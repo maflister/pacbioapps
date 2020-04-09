@@ -5,7 +5,7 @@ From: ubuntu:16.04
 Maintainer Matthew Flister
 
 %help
-This container runs includes available PacBio apps as of 09/18/2019.
+This container runs includes available PacBio apps as of 04/09/2020.
 
 %environment
     SHELL=/bin/bash
@@ -22,10 +22,7 @@ This container runs includes available PacBio apps as of 09/18/2019.
         libboost-all-dev \
         libhdf5-serial-dev \
         zlib1g-dev \
-        python3-pip \
         pkg-config \
-        python-dev \
-        python-setuptools \
         wget \
         bzip2
     apt-get clean
@@ -60,8 +57,4 @@ This container runs includes available PacBio apps as of 09/18/2019.
         pb-falcon \
         pb-dazzler \
         pb-assembly \
-        haslr
 
-    wget https://github.com/lh3/minimap2/releases/download/v2.17/minimap2-2.17_x64-linux.tar.bz2 && tar -xvf minimap2-2.17_x64-linux.tar.bz2
-    mv minimap2-2.17_x64-linux/minimap2 /opt/miniconda2/bin
-    rm -rf minimap2-2.17_x64-linux*
